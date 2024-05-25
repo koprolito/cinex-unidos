@@ -17,39 +17,39 @@
         </nav>
     </header>
 
-    <section class="log-in">
-        <h3>Inicie sesión: </h3>
+    <form id="log-in" action="">
+        <h1>Inicie sesión: </h1>
         <div class="input">
-            <h5>Correo electrónico: </h5>
-            <input type="text" placeholder="Correo">
+            <label for="txtCorreoIngreso">Correo electrónico: </label for="">
+            <input id="txtCorreoIngreso" type="text" placeholder="Correo">
         </div>
         <div class="input">
-            <h5>Clave: </h5>
-            <input type="password" placeholder="Clave">
+            <label for="txtClaveIngreso">Clave: </label>
+            <input id="txtClaveIngreso" type="password" placeholder="Clave">
         </div>
-    </section>
+        <button type="submit" id="buttonLog-in">Ingresar</button> <a href="index.html"><button type="button">Regresar</button></a>
+    </form>
 
-    <section class="sign-up">
-        <p>¿No tienes una cuenta?</p>
+    <form action="" id="sign-up">
+        <h2>¿No tienes una cuenta?</h2>
         <h3>Crea una cuenta: </h3>
         <div class="input">
-            <h5>Correo electrónico: </h5>
-            <input type="text" placeholder="Correo">
+            <label for="txtCorreo">Correo electrónico: </label>
+            <input id="txtCorreo" type="text" placeholder="Correo">
         </div>
         <div class="input">
-            <h5>Clave: </h5>
-            <input type="password" placeholder="Clave">
+            <label for="txtClave">Clave: </label>
+            <input id="txtClave" type="password" placeholder="Clave">
         </div>
         <div class="input">
-            <h5>Nombre y Apellidos: </h5>
-            <input type="text" placeholder="Nombre y apellidos">
+            <label for="txtNombreApellido">Nombre y Apellidos: </label>
+            <input id="txtNombreApellido" type="text" placeholder="Nombre y apellidos">
         </div>
         <div class="input">
-            <h5>Cédula de identidad: </h5>
-            <input type="text" placeholder="Cédula">
+            <label for="txtCedula">Cédula de identidad: </label>
+            <input id="txtCedula" type="text" placeholder="Cédula">
         </div>
-    </section> <br>
-    <input type="button" value="Aceptar">
-
+        <button id="buttonSign-up" tabindex="submit">Crear cuenta</button>
+    </form>
 </body>
 </html>
