@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-VE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicia Sesión</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html"><img src="./img/cinex-unidos-p.png" width="100" alt="Cinex Unidos"></a>
+            <a href="./cartelera.html">Cartelera</a>
+            <a href="./promociones.html">Promociones</a>
+            <a href="./cines.html">Cines</a>
+            <a href="./ProxEstrenos.html">Próximos Estrenos</a>
+            <a href="./login.html">Usuario</a>
+        </nav>
+    </header>
+
+    <form id="log-in" action="">
+        <h1>Inicie sesión: </h1>
+        <div class="input">
+            <label for="txtCorreoIngreso">Correo electrónico: </label for="">
+            <input id="txtCorreoIngreso" type="text" placeholder="Correo">
+        </div>
+        <div class="input">
+            <label for="txtClaveIngreso">Clave: </label>
+            <input id="txtClaveIngreso" type="password" placeholder="Clave">
+        </div>
+        <button type="submit" id="buttonLog-in">Ingresar</button> <a href="index.html"><button type="button">Regresar</button></a>
+    </form>
+
+    <form action="" id="sign-up">
+        <h2>¿No tienes una cuenta?</h2>
+        <h3>Crea una cuenta: </h3>
+        <div class="input">
+            <label for="txtCorreo">Correo electrónico: </label>
+            <input id="txtCorreo" type="text" placeholder="Correo">
+        </div>
+        <div class="input">
+            <label for="txtClave">Clave: </label>
+            <input id="txtClave" type="password" placeholder="Clave">
+        </div>
+        <div class="input">
+            <label for="txtNombreApellido">Nombre y Apellidos: </label>
+            <input id="txtNombreApellido" type="text" placeholder="Nombre y apellidos">
+        </div>
+        <div class="input">
+            <label for="txtCedula">Cédula de identidad: </label>
+            <input id="txtCedula" type="text" placeholder="Cédula">
+        </div>
+        <button id="buttonSign-up" tabindex="submit">Crear cuenta</button>
+    </form>
+</body>
+</html>
