@@ -3,7 +3,7 @@ CinexUnidos
 Descripción:
   Este proyecto se hace con la finalidad de dar cumplimiento a lo pautado 
   en el plan de evaluación en la materia "Programación Orientada a la Web" en la Universidad
-  Católica Andrés Bello en el segundo semestre del período académico 2023-2024. El proyecto en cuestión
+  Católica Andrés Bello en el segundo semestre del período académico 2023-2024. El taller en cuestión
   simula el comportamiento de una aplicación web de un cine para el apartado del cliente, entiendase
   la visualización de los cines, de las funciones del cine, las películas en proyección y la
   reservación de asientos.
