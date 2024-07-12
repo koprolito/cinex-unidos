@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinex unidos empleado</title>
+    <style>
+        .center {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .chat {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24rem;
+            height: 38rem;
+            z-index: 2;
+            box-sizing: border-box;
+            border-radius: 1rem;
+            background: white;
+            box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+        }
+
+        .chat .contact.bar {
+            flex-basis: 3.5rem;
+            flex-shrink: 0;
+            margin: 1rem;
+            box-sizing: border-box;
+        }
+
+        .chat .messages {
+            padding: 1rem;
+            background: #f7f7f7;
+            flex-shrink: 2;
+            overflow-y: auto;
+            min-height: 420px;
+            box-shadow:
+                inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05),
+                inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
+        }
+
+        .chat .messages .time {
+            font-size: 0.8rem;
+            background: #eee;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            color: #999;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .chat .messages .message {
+            box-sizing: border-box;
+            padding: 0.5rem 1rem;
+            margin: 1rem;
+            background: #fff;
+            border-radius: 1.125rem 1.125rem 1.125rem 0;
+            min-height: 2.25rem;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+            max-width: 66%;
+            box-shadow:
+                0 0 2rem rgba(0, 0, 0, 0.075),
+                0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .chat .messages .message.incoming {
+            margin: 1rem 1rem 1rem auto;
+            border-radius: 1.125rem 1.125rem 0 1.125rem;
+            background: #333;
+            color: white;
+        }
+
+        .chat .input {
+            box-sizing: border-box;
+            flex-basis: 4rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem 0 1.5rem;
+        }
+
+        .chat .input i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 200ms;
+        }
+
+        .chat .input i:hover {
+            color: #333;
+        }
+
+        .chat .input input {
+            border: none;
+            background-image: none;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            border-radius: 1.125rem;
+            flex-grow: 2;
+            box-shadow:
+                0 0 1rem rgba(0, 0, 0, 0.1),
+                0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+            font-family:
+                Red hat Display,
+                sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.025em;
+        }
+
+        .chat .input input:placeholder {
+            color: #999;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+        }
+
+        .btn {
+            background-color: rgb(235, 235, 235);
+            width: 250px;
+            height: 100px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .listas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <div id="vistaNombre">
+            <form class="form" id="formNombre" onsubmit="">
+                <input placeholder="Tu nombre" id="inputNombre" type="text">
+            </form>
+        </div>
+
+        <!-- Ver usuarios conectados -->
+        <section id="clientesOnline" style="display: none;">
+            <h2>Clientes:</h2>
+            <div class="listas" id="listaClientes">
+                <!-- Clientes -->
+            </div>
+        </section>
+
+        <!-- Vista del chat con el usuario elegido -->
+        <div class="chat" id="vistaChat" style="display: none;">
+            <!-- Información del contacto -->
+            <div class="contact bar">
+                <div class="name" id="username">
+                    <p>Tú: Empleado</p>
+                    <p id="chateandoCon">Chateando con:</p>
+                </div>
+            </div>
+
+            <div class="messages" id="chat">
+
+                <!-- Burbujas mientras escribe -->
+                <div class="message" style="display: none;">
+                    <div class="typing typing-1"></div>
+                    <div class="typing typing-2"></div>
+                    <div class="typing typing-3"></div>
+                </div>
+            </div>
+
+            <!-- Inputs y Forms -->
+            <form class="input" id="formChat">
+                <input id="inputChat" placeholder="Escribe tu mensaje aquí" type="text">
+                <button type="submit">Enviar</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="https://cinexunidos-production.up.railway.app/socket.io/socket.io.js"></script>
+    <script>
+        // id del cliente con el que se esta hablando
+        let idCliente = '';
+        let nombreEmpleado = '';
+        let socket;
+
+        //El evento de guardar el nombre de usuario del empleado
+        document.getElementById('formNombre').addEventListener('submit', (evt => {
+            evt.preventDefault();
+            nombreEmpleado ='Empleado '+ document.getElementById('inputNombre').value;
+            conectar();
+            cambiarVista('clientesOnline','vistaNombre');
+        }))
+
+        // Funcion para mandar mensajes en el chat
+        document.getElementById('formChat').addEventListener('submit', (evt) => {
+            evt.preventDefault();
+            let mensajeInput = document.getElementById('inputChat');
+            let mensaje = mensajeInput.value;
+            mensajeInput.value = '';
+            socket.emit('send-message', mensaje);
+        })
+
+        //Realiza la conexion luego de que el empleado elige su nombre
+        function conectar() {
+            socket = io.connect('https://cinexunidos-production.up.railway.app', {
+                transports: ['websocket'],
+                auth: {
+                    token: 'ABC-456', // Se debería sustituir por un token real...
+                    name: nombreEmpleado,
+                }
+            });
+            socket.on('connect', () => {
+                let str = 'hola amigo';
+                str = str.slice(1);
+                console.log(str);
+                console.log('Connected');
+            });
+
+            socket.on('disconnect', () => {
+                console.log('Disconnected');
+            });
+
+            socket.on('online-users', cargarListaClientes);
+
+            socket.on('new-message', cargarMensajes);
+        }
+
+
+        // reviso la lista de usuarios conecctados para ver los clientes
+        function cargarListaClientes(usuarios) {
+            let listaClientes = document.getElementById('listaClientes');
+            listaClientes.innerHTML = '';
+            let clienteSigueActivo = false;//Esto me sirve para saber si el cliente con el que estaba chateando se desconecto
+            usuarios.forEach(usuario => {
+                let clienteID = usuario.id;
+                if (clienteID === idCliente)
+                    clienteSigueActivo = true;
+                let clienteNombre = usuario.name;
+
+                if (clienteID != socket.id && !clienteNombre.includes('Empleado')) {//No se muestra ni el mismo empleado ni ningun otro empleado
+                    let btnUsuario = document.createElement('button'); //class="btnCine"
+                    btnUsuario.setAttribute('class', "btn");
+                    btnUsuario.setAttribute('id', clienteID);
+                    btnUsuario.setAttribute('name', clienteNombre);
+                    btnUsuario.onclick = function () { iniciarChat(clienteID, clienteNombre) };
+                    let nombre = document.createElement('p');
+                    nombre.textContent = clienteNombre;
+                    btnUsuario.appendChild(nombre);
+                    listaClientes.appendChild(btnUsuario);
+                }
+            });
+            if (!clienteSigueActivo && idCliente.length !== 0) {//Si el cliente con el que chateaba se desconecto, cierro chat
+                cancelarChat();
+            }
+        }
+
+        //Funcion para iniciar el chat con el ciente elegido
+        function iniciarChat(id, name) {
+            idCliente = id;
+            document.getElementById('chateandoCon').innerHTML = `Chateando con: ${name}`;
+            cambiarVista('vistaChat', 'clientesOnline');
+            let msg = '@Bienvenido al chat de soporte de Cinex Unidos, ¿en qué puedo ayudarle?';
+            xsocket.emit('send-message', msg);
+        }
+
+        //Cuando el cliente se va
+        function cancelarChat() {
+            idCliente = '';
+            document.getElementById('chat').innerHTML = '';
+            cambiarVista('clientesOnline', 'vistaChat');
+        }
+
+        //Para ver los mensajes entrantes, los voy filtrando para ver solo los del empleado y el cliente
+        function cargarMensajes(data) {
+            let { id, message, name } = data;
+            if (id == idCliente || id == socket.id) {
+                const divMensaje = document.createElement('div');
+                divMensaje.classList.add('message');
+                if (id !== socket.id) {
+                    divMensaje.classList.add('incoming');
+                }
+                if (id == socket.id && message[0] === '@') {
+                    message = message.slice(1);
+                    console.log(message);
+                }
+                divMensaje.innerHTML = `<small>${name}</small><p>${message}</p>`;
+                let chat = document.getElementById('chat');
+                chat.appendChild(divMensaje);
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
+
+        function cambiarVista(abrir_id, cerrar_id) {
+            document.getElementById(abrir_id).style.display = "block";
+            document.getElementById(cerrar_id).style.display = "none"
+        }
+    </script>
+</body>
+
+</html>
