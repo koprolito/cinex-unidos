@@ -1,79 +1,943 @@
 <!DOCTYPE html>
-<html lang="es-VE">
-    <head>
-        <title>Cinex Unidos</title>
-    </head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinex Unidos</title>
+    <link rel="icon" href="https://cinexunidos-production.up.railway.app/assets/images/cinex-unidos.png" type="image/png">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:400,500,900&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+        }
+
+        button {
+            background-color: rgb(235,235,235);
+            width: 75px;
+            height: 40px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(190,190,190);
+        }
+
+        .listas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .btn {
+            background-color: rgb(235,235,235);
+            width: 250px;
+            height: 350px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.2);
+            background-color: rgb(190,190,190);
+            transition: background-color 0.5s ease;
+            transition: box-shadow 0.5s ease;
+        }
+
+        .btn:hover .img {
+            transform: scale(1.1);
+            transition: scale 0.5s ease;
+        }
+
+        .img {
+            width: 100%;
+            height: 250px;
+            margin: 10px 0px;
+            background-image: url('');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .btnCine > h3, .btnSala > h3, .btnFuncion > h3 {
+            margin: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        .informacion {
+            height: 40px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #info {
+            display: flex;
+            gap: 10px;
+        }
+
+        #legend {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .color {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+        }
+
+        #verde{
+            background-color: green;
+        }
+
+        #azul{
+            background-color: blue;
+        }
+
+        #rojo{
+            background-color: red;
+        }
+
+        #seatsContainer > button {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #seat-selection {
+            margin: 0 auto;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 10px;
+        }
+
+        #seat-selection td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #000000;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 10px;
+            
+            background-size: 20px 20px; 
+            background-repeat: no-repeat;
+            background-position: center;
+        }
         
-    <body>
-        <header>
-            <a href="index.html"><img src="./img/cinex-unidos-p.png" width="100" alt="Cinex Unidos"></a>
-            <a href="./cartelera.html">Cartelera</a>
-            <a href="./promociones.html">Promociones</a>
-            <a href="./cines.html">Cines</a>
-            <a href="./ProxEstrenos.html">Próximos Estrenos</a>
-            <a href="./login.html">Usuario</a>
-        </header>
-        <h1>Menu principal</h1>
-        <section id="peliculasVistas">
-            <h2>Películas vistas</h2>
-            <ol>
-                <li>
-                    <figure class="peliculaVista">
-                        <a href="./infoPelicula.html">
-                            <img src="./img/NiñoYGarza.PNG" alt="El niño y la garza"/>
-                        </a>
-                        <figcaption>
-                            08/03/2024
-                        </figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="peliculaVista">
-                        <a href="./infoPelicula.html">
-                            <img src="./img/Star Wars.PNG" alt="Star Wars Episodio 1"/>
-                        </a>
-                        <figcaption>
-                            15/04/2024
-                        </figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="peliculaVista">
-                        <a href="./infoPelicula.html">
-                            <img src="./img/Dune.PNG" alt="Dune"/>
-                        </a>
-                        <figcaption>
-                            10/05/2024
-                        </figcaption>
-                    </figure>
-                </li>
-            </ol>
-        </section>
-        <section>
-            <h2>Mejores películas del momento</h2>
-            <ol>
-                <li>
-                    <figure class="pelicula">
-                        <a href="./infoPelicula.html">
-                            <img src="./img/Kung Fu Panda.png" alt="Kung Fu Panda 4"/>
-                        </a>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="pelicula">
-                        <a href="./infoPelicula.html">
-                            <img src="./img/Garfield.jpg" alt="Garfield"/>
-                        </a>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="pelicula">
-                        <a href="./infoPelicula.html">
-                            <img src="./img/GodzillaKong.jpg" alt="Godzilla v Kong El nuevo Imperio"/>
-                        </a>
-                    </figure>
-                </li>
-            </ol>
-        </section>
-    </body>
+        #seat-selection td.unavailable {
+            background-image: url(' ');
+            cursor: auto;
+            border: 0px;
+        }
+
+        #seat-selection td.available {
+            background-color: blue;
+            color: white;
+        }
+
+        #seat-selection td.available:hover {
+            background-color: rgb(143, 143, 255);
+            color: white;
+        }
+
+        #seat-selection td.selected {
+            background-color: green;
+            color: white;
+        }
+
+        #seat-selection td.occupied {
+            background-color: red;
+            cursor: not-allowed;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        .desactivado {
+            cursor: not-allowed;
+            background-color: rgb(229, 229, 229) !important;
+            pointer-events:none;
+        }
+
+        /* Chat: */
+
+        #containerNombre {
+            margin: 10px auto;
+        }
+
+        #containerNombre button {
+            background-color: rgb(235,235,235);
+            width: 100px;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #000000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .input input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 15px;
+        }
+
+        .center {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .bottom-right {
+            position: fixed;
+            bottom: 0;
+            right: 100px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .bottom-right.expandido {
+            transform: translateY(0);
+        }
+
+        .pic {
+            width: 4rem;
+            height: 4rem;
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        .contact {
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 5rem;
+            height: 4.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .contact .pic {
+            position: absolute;
+            left: 0;
+        }
+        .contact .name {
+            font-weight: 500;
+            margin-bottom: 0.125rem;
+        }
+
+        .contact .message,
+        .contact .seen {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .chat {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24rem;
+            height: 38rem;
+            z-index: 2;
+            box-sizing: border-box;
+            border-radius: 1rem;
+            background: white;
+            box-shadow:
+                0 0 8rem 0 rgba(0, 0, 0, 0.6),
+                0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+        }
+
+        .chat .contact.bar {
+            flex-basis: 3.5rem;
+            flex-shrink: 0;
+            margin: 1rem;
+            box-sizing: border-box;
+        }
+
+        .chat .messages {
+            padding: 1rem;
+            background: #f7f7f7;
+            flex-shrink: 2;
+            overflow-y: auto;
+            min-height: 420px;
+            box-shadow:
+                inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05),
+                inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
+        }
+        .chat .messages .time {
+            font-size: 0.8rem;
+            background: #eee;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            color: #999;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .chat .messages .message {
+            box-sizing: border-box;
+            padding: 0.5rem 1rem;
+            min-height: 2.25rem;
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
+            max-width: 66%;
+            box-shadow:
+                0 0 2rem rgba(0, 0, 0, 0.075),
+                0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .message.incoming {
+            margin: 1rem;
+            border-radius: 1.125rem 1.125rem 1.125rem 0;
+            background: #fff;
+            color: black;
+        }
+
+        .message {
+            margin: 1rem 1rem 1rem auto;
+            border-radius: 1.125rem 1.125rem 0 1.125rem;
+            background: #333;
+            color: white;
+        }
+
+        .chat .messages .message .typing {
+            display: inline-block;
+            width: 0.8rem;
+            height: 0.8rem;
+            margin-right: 0rem;
+            box-sizing: border-box;
+            background: #ccc;
+            border-radius: 50%;
+        }
+        .chat .input {
+            box-sizing: border-box;
+            flex-basis: 4rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem 0 1.5rem;
+        }
+        .chat .input i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 200ms;
+        }
+        .chat .input i:hover {
+            color: #333;
+        }
+        .chat .input input {
+            border: none;
+            background-image: none;
+            background-color: white;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            border-radius: 1.125rem;
+            flex-grow: 2;
+            box-shadow:
+                0 0 1rem rgba(0, 0, 0, 0.1),
+                0rem 1rem 1rem -1rem rgba(0, 0, 0, 0.2);
+            font-family:
+                Red hat Display,
+                sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.025em;
+        }
+        .chat .input input:placeholder {
+            color: #999;
+        }
+
+        .pic {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="cines">
+        <h2>Cines:</h2>
+        <div class="listas" id="cinesList">
+            <!-- Cines -->
+        </div>
+    </div>
+
+    <div id="salas">
+        <h2>Salas:</h2>
+        <div class="listas" id="salasList">
+            <!-- Salas -->
+        </div>
+        <button type="button" onclick="backToCines()">Volver</button>
+    </div>
+
+    <div id="funciones">
+        <h2>Funciones:</h2>
+        <div class="listas" id="funcionesList">
+            <!-- Funciones -->
+        </div>
+        <button type="button" onclick="backToSalas()">Volver</button>
+    </div>
+
+    <!-- Menu asientos -->
+    <div id="menuAsientos">
+        <div class="informacion">
+            <div id="info">
+                <h3>Cine: </h3>
+                <h3 id="cineLabel"></h3>
+            </div>
+            <div id="info">
+                <h3>Sala: </h3>
+                <h3 id="salaLabel"></h3>
+            </div>
+            <div id="info">
+                <h3>Funcion: </h3>
+                <h3 id="funcionLabel"></h3>
+            </div>
+        </div>
+        <form id="seatsContainer">
+            <div id="legend">
+                <h3>Disponible</h3>
+                <div class="color" id="azul"></div>
+                <h3>Seleccionado</h3>
+                <div class="color" id="verde"></div>
+                <h3>Ocupado</h3>
+                <div class="color" id="rojo"></div>
+            </div>
+            
+            <table id="seat-selection"></table>
+            <button class="supportBtn" type="button">Soporte</button>
+            <button type="submit">Aceptar</button>
+            <button type="button" onclick="backToFunciones()">Volver</button>
+        </form>
+        <div class="bottom-right">
+            <!-- Chat -->
+            <div class="chat">
+                <!-- Información del contacto -->
+                <div class="contact bar">
+                    <div class="pic" id="username-pic"></div>
+                    <div class="name" id="username"></div>
+                    <div class="nameEmpl" id="nameEmpl"></div>
+                </div>
+                
+                <div id="containerNombre">
+                    <input id="inputNombre" placeholder="Escriba su nombre"></input>
+                    <button type="button" onclick="connect()">Conectar</button>
+                </div>
+
+                <div class="messages" id="chat">
+                    <!-- Mensajes -->
+                </div>
+        
+                <!-- Inputs y Forms -->
+                <form class="input" id="formChat">
+                    <input id="inputChat" placeholder="Escribe tu mensaje aquí" type="text" />
+                    <i class="fas fa-paper-plane"></i>
+                </form>
+        
+            </div>
+        </div>
+    </div>
+    
+    <div id="Confirmar">
+        <h2>Confirmar:</h2>
+        <h5 id="CineC"></h5>
+        <h5 id="SalaC"></h5>
+        <h5 id="FuncionC"></h5>
+        <h5 id="AsientosC"></h5>
+        <button type="button" onclick="confirmar()">Confirmar</button>
+        <button type="button" onclick="backToSeats()">Cancelar</button>
+    </div>
+
+    <div id="Resumen">
+        <h2>Resumen:</h2>
+        <h5 id="CineR"></h5>
+        <h5 id="SalaR"></h5>
+        <h5 id="FuncionR"></h5>
+        <h5 id="AsientosR"></h5>
+        <button type="reset" onclick="reinicio()">Volver al Menu</button>
+    </div>
+
+    <script src="https://cinexunidos-production.up.railway.app/socket.io/socket.io.js"></script>
+    <script>
+        const apiToken = "https://cinexunidos-production.up.railway.app";
+        const seatSelectionTable = document.getElementById('seat-selection');
+        const seatSelectionForm = document.getElementById('seatsContainer');
+
+        const listaCine = document.getElementById('cinesList');
+        const listaSala = document.getElementById('salasList');
+        const listaFuncion = document.getElementById('funcionesList');
+
+        /*
+        -1 : no hay asiento
+        0 : disponible
+        1 : ocupado
+        */
+        let eventSource;
+        let selectedSeats = []; // Asientos seleccionados
+        let maxColumn = 0, maxRow = 0;
+
+        //Cine-Sala-Funcion que estamos viendo
+        let idCineSelec = "";
+        let idSalaSelec = "";
+        let idFuncionSelec = "";
+
+        let nameCineSelec = "";
+        let nameSalaSelec = "";
+        let nameFuncionSelec = "";
+
+        document.querySelector('.supportBtn').addEventListener('click', function() {
+            document.querySelector('.bottom-right').classList.toggle('expandido');
+        });
+
+        function setInfo(cine, sala, funcion) {
+            document.getElementById('cineLabel').textContent = cine;
+            document.getElementById('salaLabel').textContent = sala;
+            document.getElementById('funcionLabel').textContent = funcion;
+        }
+
+        function toggleSeccion(LabelName, allowedToPlay) {
+            const seccion = document.getElementById(LabelName);
+            if (allowedToPlay) {
+                seccion.classList.remove('oculto');
+            } else {
+                seccion.classList.add('oculto');
+            }
+        }
+
+        function loadCines() {
+            fetch(`${apiToken}/theatres`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify()
+            })
+            .then(response => response.json())
+            .then(data => {
+                while (listaCine.firstChild) {
+                    listaCine.removeChild(listaCine.firstChild);
+                }
+                data.forEach(cine => {
+                    //listaCine
+                    let btnCine = document.createElement('button'); //class="btnCine"
+                    btnCine.setAttribute('class', "btn");
+                    btnCine.setAttribute('id', cine.id);
+                    btnCine.setAttribute('name', cine.name);
+                    btnCine.onclick = function() {loadSalas(cine)};
+
+                    let cineImg = document.createElement('div'); //class="img"
+                    cineImg.setAttribute('class', "img");
+                    let url = apiToken +"/"+ cine.images[0];
+                    cineImg.style.backgroundImage = `url(${url})`;
+                    btnCine.appendChild(cineImg);
+                    
+                    let cineName = document.createElement('h3');
+                    cineName.textContent = cine.name;
+                    btnCine.appendChild(cineName);
+                    
+                    listaCine.appendChild(btnCine);
+                });
+            });
+        }
+
+        function loadSalas(cine) {
+            fetch(`${apiToken}/theatres/${cine.id}/auditoriums`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify()
+            })
+            .then(response => response.json())
+            .then(data => {
+                while (listaSala.firstChild) {
+                    listaSala.removeChild(listaSala.firstChild);
+                }
+                toggleSeccion('salas', true);
+                toggleSeccion('cines', false);
+                idCineSelec = cine.id;
+                nameCineSelec = cine.name;
+
+                data.forEach(sala => {
+                    //listaSala
+                    let btnSala = document.createElement('button'); //class="btnSala"
+                    btnSala.setAttribute('class', "btn");
+                    btnSala.setAttribute('id', sala.id);
+                    btnSala.setAttribute('name', sala.name);
+                    btnSala.onclick = function() {loadFunciones(sala)};
+                    
+                    let salaName = document.createElement('h3');
+                    salaName.textContent = sala.name;
+                    btnSala.appendChild(salaName);
+                    
+                    listaSala.appendChild(btnSala);
+                });
+            });
+        }
+
+        function loadFunciones(sala) {
+            
+            fetch(`${apiToken}/theatres/${idCineSelec}/auditoriums/${sala.id}/showtimes`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify()
+            })
+            .then(response => response.json())
+            .then(data => {
+                while (listaFuncion.firstChild) {
+                    listaFuncion.removeChild(listaFuncion.firstChild);
+                }
+                toggleSeccion('funciones', true);
+                toggleSeccion('salas', false);
+                idSalaSelec = sala.id;
+                nameSalaSelec = sala.name;
+
+                data.forEach(funcion => {
+                    //listaFuncion
+                    let btnFuncion = document.createElement('button'); //class="btnFuncion"
+                    btnFuncion.setAttribute('class', "btn");
+                    btnFuncion.setAttribute('id', funcion.id);
+                    btnFuncion.setAttribute('movie', funcion.movie.name);
+                    btnFuncion.onclick = function() {nameFuncionSelec = pelicula.name; nameSalaSelec = sala.name + " - " + funcion.startTime; seleccionAsientos(idCineSelec, idSalaSelec, funcion.id)};
+
+                    let funcionImg = document.createElement('div'); //class="img"
+                    funcionImg.setAttribute('class', "img");
+                    let url = apiToken +"/"+ funcion.movie.poster;
+                    funcionImg.style.backgroundImage = `url(${url})`;
+                    btnFuncion.appendChild(funcionImg);
+                    
+                    let funcionName = document.createElement('h3');
+                    let pelicula = funcion.movie;
+                    
+                    funcionName.textContent = pelicula.name + " - "  + funcion.startTime + " - " + pelicula.runningTime + " - " + pelicula.rating;
+                    btnFuncion.appendChild(funcionName);
+
+                    listaFuncion.appendChild(btnFuncion);
+                });
+            });
+        }
+
+        function backToCines() {
+            toggleSeccion('salas', false);
+            toggleSeccion('cines', true);
+            loadCines();
+        }
+
+        function backToSalas() {
+            toggleSeccion('funciones', false);
+            toggleSeccion('salas', true);
+            loadSalas({id: idCineSelec});
+        }
+
+        function backToFunciones() {
+            toggleSeccion('menuAsientos', false);
+            toggleSeccion('funciones', true);
+            loadFunciones({id: idSalaSelec});
+        }
+
+        function seleccionAsientos(idCine, idSala, idFuncion) {
+            idFuncionSelec = idFuncion;
+            toggleSeccion('menuAsientos', true);
+            toggleSeccion('funciones', false);
+            selectedSeats = [];
+            setInfo(nameCineSelec, nameSalaSelec, nameFuncionSelec);
+            getSeats(idCine, idSala, idFuncion);
+            seatsHaveChange(idCine, idSala, idFuncion);
+        }
+
+        //Abre el eventSource para ver si hay cambios en los asientos
+        function seatsHaveChange(idCine, idSala, idFuncion) {
+            eventSource = new EventSource(`${apiToken}/theatres/${idCine}/auditoriums/${idSala}/showtimes/${idFuncion}/reservation-updates`);
+            eventSource.onmessage = (event) => {
+                let data = JSON.parse(event.data);
+                let cell = document.querySelector(`td[data-seat="${data.seat}"]`);
+                
+                if (data.result === "SEAT_RELEASED") {
+                    if(cell.classList.contains('selected')) {
+                        cell.classList.remove('selected');
+                        selectedSeats = selectedSeats.filter((seat) => seat !== data.seat);
+                    } else {
+                        cell.classList.remove('occupied');
+                    }
+                    cell.classList.add('available');
+                } else if (data.result === "SEAT_RESERVED") {
+                    if(cell.classList.contains('selected') && (!document.getElementById('menuAsientos').classList.contains('oculto'))) {
+                        cell.classList.remove('selected');
+                        selectedSeats = selectedSeats.filter((seat) => seat !== data.seat);
+                    } else {
+                        cell.classList.remove('available');
+                    }
+                    cell.classList.add('occupied');
+                }
+            };
+        }
+
+        //Obtiene los datos del server y crea la tabla de asientos
+        function getSeats(idCine, idSala, idFuncion) {
+            fetch(`${apiToken}/theatres/${idCine}/auditoriums/${idSala}/showtimes/${idFuncion}`, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify()
+            })
+            .then(response => response.json())
+            .then(respuesta => {
+                
+                //Vaciar tabla
+                while (seatSelectionTable.firstChild) {
+                    seatSelectionTable.removeChild(seatSelectionTable.firstChild);
+                }
+
+                let asientos = respuesta.seats;
+
+                //Obtener altura maxima y ancho maximo de la tabla
+                maxColumn = Object.keys(asientos).length;
+                for (let i = maxColumn; i > 0; i--) {
+                    if(maxRow < Object.keys(asientos[String.fromCharCode(i+64)]).length){
+                        maxRow = Object.keys(asientos[String.fromCharCode(i+64)]).length;
+                    }
+                }
+
+                //Generar tabla de asientos
+                for (let i = maxColumn-1; i>=0; i--) {
+                    let letra = String.fromCharCode(i+65);
+                    let asiento = asientos[letra];
+                    const row = document.createElement('tr');
+                    row.id = letra;
+
+                    asiento.forEach((elemento, index) => {
+                        const cell = document.createElement('td');
+                        if (elemento === 0) {
+                            cell.setAttribute('data-value', 0);
+                            cell.classList.add('available');
+                            cell.textContent = letra + (index);
+                        } else if (elemento === 2) {
+                            cell.setAttribute('data-value', 2);
+                            cell.classList.add('occupied');
+                            cell.textContent = letra + (index);
+                        } else {
+                            cell.setAttribute('data-value', -1);
+                            cell.classList.add('unavailable');
+                        }
+                        
+                        cell.setAttribute('data-seat', letra + (index));
+                        row.appendChild(cell);
+                    });
+                    seatSelectionTable.appendChild(row);
+                }
+            })
+        }
+
+        //Evento de seleccion de asientos
+        seatSelectionTable.addEventListener('click', (event) => {
+            if (event.target.tagName === 'TD') {
+                const cell = event.target;
+                const seatNumber = ((cell.parentNode.id) + (cell.cellIndex));
+
+                if (cell.classList.contains('available')) {
+                    cell.classList.remove('available');
+                    cell.classList.add('selected');
+                    selectedSeats.push(seatNumber);
+                } else if (cell.classList.contains('selected')) {
+                    cell.classList.remove('selected');
+                    cell.classList.add('available');
+                    selectedSeats = selectedSeats.filter((seat) => seat !== seatNumber);
+                }
+            }
+        });
+
+        //Confirmar asientos seleccionados
+        seatSelectionForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if(selectedSeats.length === 0) {
+                alert('Debe seleccionar al menos un asiento');
+                return;
+            }
+            selectedSeats.forEach(asiento => {
+                fetch(`${apiToken}/theatres/${idCineSelec}/auditoriums/${idSalaSelec}/showtimes/${idFuncionSelec}/reserve`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({seat: asiento})
+                })
+            });
+
+            confirmSeatsMenu();
+            //getSeats(idCineSelec, idSalaSelec, idFuncionSelec);
+        });
+
+        function confirmSeatsMenu() {
+            toggleSeccion('menuAsientos', false);
+            toggleSeccion('Confirmar', true);
+            
+            const CcineSelec = document.getElementById('CineC');
+            const CsalaSelec = document.getElementById('SalaC');
+            const CfuncionSelec = document.getElementById('FuncionC');
+            const CasientosSelec = document.getElementById('AsientosC');
+
+            CcineSelec.textContent = "Cine seleccionado: " + nameCineSelec;
+            CsalaSelec.textContent = "Sala seleccionada: " + nameSalaSelec;
+            CfuncionSelec.textContent = "Funcion seleccionado: " + nameFuncionSelec;
+            CasientosSelec.textContent = "Asientos seleccionado(s): " + selectedSeats.join(', ');
+        }
+
+        function confirmar() {
+            toggleSeccion('Confirmar', false);
+            makeSummary();
+        }
+
+        function backToSeats() {
+            selectedSeats.forEach(asiento => {
+                fetch(`${apiToken}/theatres/${idCineSelec}/auditoriums/${idSalaSelec}/showtimes/${idFuncionSelec}/reserve`, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({seat: asiento})
+                })
+            })
+            //selectedSeats = [];
+            getSeats(idCineSelec, idSalaSelec, idFuncionSelec);
+            toggleSeccion('menuAsientos', true);
+            toggleSeccion('Confirmar', false);
+        }
+
+        function makeSummary() { //Esta funcion solo para el taller, luego se elimina/modifica
+            toggleSeccion('Resumen', true);
+            toggleSeccion('menuAsientos', false);
+
+            const RcineSelec = document.getElementById('CineR');
+            const RsalaSelec = document.getElementById('SalaR');
+            const RfuncionSelec = document.getElementById('FuncionR');
+            const RasientosSelec = document.getElementById('AsientosR');
+
+            RcineSelec.textContent = "Cine seleccionado: " + nameCineSelec;
+            RsalaSelec.textContent = "Sala seleccionada: " + nameSalaSelec;
+            RfuncionSelec.textContent = "Funcion seleccionado: " + nameFuncionSelec;
+            RasientosSelec.textContent = "Asientos seleccionado(s): " + selectedSeats.join(', ');
+        }
+
+        function reinicio() {
+            toggleSeccion('Confirmar', false);
+            toggleSeccion('Resumen', false);
+            toggleSeccion('menuAsientos', false);
+            toggleSeccion('salas', false);
+            toggleSeccion('funciones', false);
+            toggleSeccion('cines', true);
+
+            //Chat
+            if (socket !== undefined) {
+                socket.disconnect();
+            }
+            toggleSeccion('containerNombre', true);
+            toggleSeccion('formChat', false);
+            document.getElementById('inputNombre').value = '';
+            document.getElementById('chat').innerHTML = '';
+            document.getElementById('username').textContent = '';
+            document.getElementById('nameEmpl').textContent = '';
+
+            loadCines();
+        }
+
+        //CHAT:
+        let socket;
+        let idEmpleado = '';
+        let nameEmpleado = '';
+
+        document.getElementById('formChat').addEventListener('submit', (evt)=>{
+            evt.preventDefault();
+
+            let mensajeInput = document.getElementById('inputChat');
+            let mensaje = mensajeInput.value;
+            mensajeInput.value='';
+            socket.emit('send-message', mensaje);
+        });
+
+        function connect() {
+            let userName = document.getElementById('inputNombre').value;
+            //let userName = 'Usuario';
+            document.getElementById('username').textContent = "Tu: " + userName;
+            toggleSeccion('containerNombre', false);
+            toggleSeccion('formChat', true);
+
+            socket = io.connect('https://cinexunidos-production.up.railway.app', {
+                transports: ['websocket'],
+                auth: {
+                    token: 'ABC-456', // Se debería sustituir por un token real...
+                    name: userName,
+                }
+            });
+
+            socket.on('connect', () => {
+                console.log('Connected');
+            });
+
+            socket.on('disconnect', () => {
+                console.log('Disconnected');
+            });
+
+            socket.on('new-message', cargarMensajes);
+        }
+
+        function cargarMensajes(data) {
+            const { id, message, name } = data;
+
+            if((idEmpleado === '') && (message[0] === '@')){ //Primera vez que se recibe un mensaje de un empleado
+                idEmpleado = id;
+                nameEmpleado = name;
+                document.getElementById('nameEmpl').textContent = "Hablas con: " + nameEmpleado;
+            }
+
+            if (id === idEmpleado || id === socket.id) {
+                const divMensaje = document.createElement('div');
+                divMensaje.classList.add('message');
+                if (id !== socket.id) {
+                    divMensaje.classList.add('incoming');
+                }
+                divMensaje.innerHTML = `<small>${name}</small><p>${message}</p>`;
+                let chat=document.getElementById('chat');
+                chat.appendChild(divMensaje);
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
+
+
+        //Flujo inicial
+        reinicio();
+    </script>
+</body>
 </html>
