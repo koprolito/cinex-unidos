@@ -168,8 +168,18 @@
             cursor: not-allowed;
         }
 
+        #Confirmar, #Resumen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 20%;
+            margin: 10px auto;
+            border: 1px solid;
+            border-radius: 10px;
+        }
+
         .oculto {
-            display: none;
+            display: none !important;
         }
 
         .desactivado {
@@ -474,8 +484,11 @@
         <h5 id="SalaC"></h5>
         <h5 id="FuncionC"></h5>
         <h5 id="AsientosC"></h5>
-        <button type="button" onclick="confirmar()">Confirmar</button>
-        <button type="button" onclick="backToSeats()">Cancelar</button>
+        <div id="buttonsContainer">
+            <button type="button" onclick="confirmar()">Confirmar</button>
+            <button type="button" onclick="backToSeats()">Cancelar</button>
+        </div>
+        
     </div>
 
     <div id="Resumen">
@@ -667,36 +680,42 @@
             loadFunciones({id: idSalaSelec});
         }
 
-        function seleccionAsientos(idCine, idSala, idFuncion) {
+        async function seleccionAsientos(idCine, idSala, idFuncion) {
             idFuncionSelec = idFuncion;
             toggleSeccion('menuAsientos', true);
             toggleSeccion('funciones', false);
             selectedSeats = [];
             setInfo(nameCineSelec, nameSalaSelec, nameFuncionSelec);
+            eventSource = new EventSource(`${apiToken}/theatres/${idCine}/auditoriums/${idSala}/showtimes/${idFuncion}/reservation-updates`);
+            await seatsHaveChange(idCine, idSala, idFuncion);
             getSeats(idCine, idSala, idFuncion);
-            seatsHaveChange(idCine, idSala, idFuncion);
         }
 
         //Abre el eventSource para ver si hay cambios en los asientos
-        function seatsHaveChange(idCine, idSala, idFuncion) {
-            eventSource = new EventSource(`${apiToken}/theatres/${idCine}/auditoriums/${idSala}/showtimes/${idFuncion}/reservation-updates`);
+        async function seatsHaveChange(idCine, idSala, idFuncion) {
             eventSource.onmessage = (event) => {
                 let data = JSON.parse(event.data);
                 let cell = document.querySelector(`td[data-seat="${data.seat}"]`);
                 
                 if (data.result === "SEAT_RELEASED") {
                     if(cell.classList.contains('selected')) {
+                        console.log('test 1');
                         cell.classList.remove('selected');
-                        selectedSeats = selectedSeats.filter((seat) => seat !== data.seat);
+                        //selectedSeats = selectedSeats.filter((seat) => seat !== data.seat);
                     } else {
+                        console.log('test 2');
                         cell.classList.remove('occupied');
                     }
+                    //console.log(selectedSeats)
+                    //console.log(cell);
                     cell.classList.add('available');
                 } else if (data.result === "SEAT_RESERVED") {
                     if(cell.classList.contains('selected') && (!document.getElementById('menuAsientos').classList.contains('oculto'))) {
+                        console.log('test 3');
                         cell.classList.remove('selected');
                         selectedSeats = selectedSeats.filter((seat) => seat !== data.seat);
                     } else {
+                        console.log('test 4');
                         cell.classList.remove('available');
                     }
                     cell.classList.add('occupied');
@@ -744,7 +763,7 @@
                             cell.setAttribute('data-value', 0);
                             cell.classList.add('available');
                             cell.textContent = letra + (index);
-                        } else if (elemento === 2) {
+                        } else if (elemento === 2 || elemento === 1) {
                             cell.setAttribute('data-value', 2);
                             cell.classList.add('occupied');
                             cell.textContent = letra + (index);
@@ -797,7 +816,6 @@
             });
 
             confirmSeatsMenu();
-            //getSeats(idCineSelec, idSalaSelec, idFuncionSelec);
         });
 
         function confirmSeatsMenu() {
@@ -820,7 +838,7 @@
             makeSummary();
         }
 
-        function backToSeats() {
+        function backToSeats() { //Cancela Compra
             selectedSeats.forEach(asiento => {
                 fetch(`${apiToken}/theatres/${idCineSelec}/auditoriums/${idSalaSelec}/showtimes/${idFuncionSelec}/reserve`, {
                     method: "DELETE",
@@ -830,7 +848,7 @@
                     body: JSON.stringify({seat: asiento})
                 })
             })
-            //selectedSeats = [];
+            selectedSeats = [];
             getSeats(idCineSelec, idSalaSelec, idFuncionSelec);
             toggleSeccion('menuAsientos', true);
             toggleSeccion('Confirmar', false);
@@ -889,7 +907,6 @@
 
         function connect() {
             let userName = document.getElementById('inputNombre').value;
-            //let userName = 'Usuario';
             document.getElementById('username').textContent = "Tu: " + userName;
             toggleSeccion('containerNombre', false);
             toggleSeccion('formChat', true);
@@ -934,7 +951,6 @@
                 chat.scrollTop = chat.scrollHeight;
             }
         }
-
 
         //Flujo inicial
         reinicio();

@@ -280,7 +280,7 @@
             document.getElementById('chateandoCon').innerHTML = `Chateando con: ${name}`;
             cambiarVista('vistaChat', 'clientesOnline');
             let msg = '@Bienvenido al chat de soporte de Cinex Unidos, ¿en qué puedo ayudarle?';
-            xsocket.emit('send-message', msg);
+            socket.emit('send-message', msg);
         }
 
         //Cuando el cliente se va
