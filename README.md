@@ -24,7 +24,7 @@ Instrucciones de uso:
   6. Al haber seleccionado uno de los contenedores, todo lo mencionado anteriormente dejará de mostrarse y 
      se deben desplegar a continuación elementos de tipo encabezado de tercer nivel,contenedores, una tabla con contenido 
      seleccionable (asientos) y tres botones. 
-     6.1. Para ciertos elementos en esta parte deben ocurrir lo siguiente:
+     1. Para ciertos elementos en esta parte deben ocurrir lo siguiente:
             - Asientos: como se debe indicar en la interfaz, cada color de cada asiento simboliza algo diferente. 
             Para los asientos de color azul (asientos disponibles), estos son asientos que puede seleccionar
             para ser procesados más adelante. Para los asientos de color rojo (asientos ocupados), estos no son
@@ -36,22 +36,22 @@ Instrucciones de uso:
                - Botón "Aceptar": sirve para procesar los asientos seleccionados. Si no ha seleccionado ningún asiento, se
                  le alerta al usuario de ello. Más adelante se desarrolla cómo proceder ante este botón
                - Botón "Voler": Lo devolverá a la interfaz que se mostró antes de la actual.
-         6.1.1. Seleccione uno o más asientos y luego presione el botón "Aceptar". Al haber hecho esto, se mostrará
+         1. Seleccione uno o más asientos y luego presione el botón "Aceptar". Al haber hecho esto, se mostrará
                una interfaz detallando los datos procesados en todas sus selecciones hasta el momento incluyendo los asientos 
                y dos botones: un botón "Confirmar" y un botón "Cancelar". Seleccione el boton "Confirmar" y, al hacerlo, se mostrará
                el resumen de todos los datos procesados hasta ese momento y un botón "Volver al menú" que, si lo selecciona,
                lo devolverá a la primera interfaz que visualizó al entrar a la página.
-         6.1.2. Si selecciona el botón "Soporte", desplegará un contenedor "chat" el cual le permitirá contactar con el 
+         2. Si selecciona el botón "Soporte", desplegará un contenedor "chat" el cual le permitirá contactar con el 
                "soporte" del cine. Lo primero que le pedirá para poder hacer esto es su nombre, escriba su nombre y presione
                la tecla "Enter" en su teclado.
-               6.1.2.1. Al seleccionarlo, ya estará en el chat esperando a que lo contacte el soporte. Debido a la versión
+               1. Al seleccionarlo, ya estará en el chat esperando a que lo contacte el soporte. Debido a la versión
                        actual del proyecto y a su simpleza, para poder interactuar con el soporte debe abrir en el navegador 
                        el archivo "empleado.html".
-               6.1.2.2. Al hacerlo, debe desplegarse primero un campo de entrada
+               2. Al hacerlo, debe desplegarse primero un campo de entrada
                        donde debe colocar el nombre de un empleado ficticio. Coloque dicho nombre y presione la tecla 
                        "Enter en su teclado".
-               6.1.2.3. Al hacerlo se mostrará una interfaz donde se le indican los clientes que 
+               3. Al hacerlo se mostrará una interfaz donde se le indican los clientes que 
                        están conectados en ese momento. Seleccione el cliente que tiene el mismo nombre que había ingresado
                        anteriormente y, al hacerlo, se desplegará un chat con dicho cliente donde podrá interactuar con el enviando mensajes como empleado.
-               6.1.2.4. El chat del cliente particular con el empleado se cierra únicamente en momento 
+               4. El chat del cliente particular con el empleado se cierra únicamente en momento 
                         el momento que lo cierre el cliente.
