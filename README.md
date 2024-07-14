@@ -54,4 +54,4 @@ Instrucciones de uso:
                        están conectados en ese momento. Seleccione el cliente que tiene el mismo nombre que había ingresado
                        anteriormente y, al hacerlo, se desplegará un chat con dicho cliente donde podrá interactuar con el enviando mensajes como empleado.
                4. El chat del cliente particular con el empleado se cierra únicamente en momento 
-                        el momento que lo cierre el cliente.
+                        el momento que lo cierre el cliente. 
